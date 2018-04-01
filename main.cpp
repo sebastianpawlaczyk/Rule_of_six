@@ -18,5 +18,10 @@ int main() {
     TestA d(std::move(b));
     std::cout<<"-----------------------"<<std::endl;
 
+    // Use Move Assignment
+    TestA e(2);
+    e = std::move(a);
+    std::cout<<"-----------------------"<<std::endl;
+
     return 0;
 }

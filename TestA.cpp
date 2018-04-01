@@ -32,9 +32,18 @@ TestA& TestA::operator=(const TestA &original) {
     return *this;
 }
 
+
 TestA::TestA(TestA &&original):value(nullptr) {
 
     std::cout<<"Move Constructor"<<std::endl;
-    value = original.value;
-    original.value = nullptr;
+    std::swap(value,original.value);
+}
+
+TestA& TestA::operator=(TestA &&original) {
+
+    if(this != &original){
+        std::swap(value,original.value);
+        std::cout<<"Copy Assignment with value = "<<*value<<" Address = "<<value<<std::endl;
+    }
+    return *this;
 }
